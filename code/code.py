@@ -12,7 +12,6 @@ pd.set_option("display.max_columns", None)
 df = pd.read_sas("demographics data/DEMO_L.xpt")
 print(df.head())
 
-
 generally important/interesting variables
 Age - RIDAGEMN(in monthsunder 24mos), RIDAGEYR(in years, caps at 80),
 RIDEXAGM (in months, under 19)
@@ -23,7 +22,6 @@ DMDBORN4 - country of birth
 
 not quite sure what to do with some of the other ones, such as the household reference
 person variables (they start with DM)
-
 
 print(df["RIDAGEMN"].unique())
 print(df.shape)
@@ -36,9 +34,6 @@ print(df.describe())
 
 
 ----------------------------------------------------------
-
-
-
 demographic variables used: 
 RIDRETH3 (demographics)
 DMDBORN4 (country of birth)
@@ -62,10 +57,8 @@ FSD230 - Does anyone in the household currently receive SNAP benefits?
 FSD151 - Emergency Food received
 
 
-
-Micro/Macronutrients
------------------------------------
-
+Macronutrients
+---------------------------------------------------
 Energy
 DR1TKCAL
 Total daily calorie intake
@@ -107,79 +100,8 @@ DR1TCHOL
 Dietary cholesterol from animal foods
 
 
-
-Vitamin B9 (folate)
-DR1TFDFE
-DNA synthesis, red blood cell development
-
-Vitamin B12
-DR1TVB12
-Nerve function, red blood cell formation
-
-Vitamin C
-DR1TVC
-Collagen formation, antioxidant defense, iron absorption
-
-Vitamin D
-DR1TVD
-Calcium absorption and bone health
------------------------------------------------------
-
-
-
-
-Food insecurity: FSDAD, FSD032C, FSD041, FSD071.
-Food assistance: FSD230, FSD151.
-Macronutrients: DR1TKCAL, DR1TPROT, DR1TCARB, DR1TTFAT, DR1TFIBE, DR1TCHOL
-Micronutrients: DR1TFDFE, DR1TVB12, DR1TVC, DR1TVD.
-Socioeconomic and demographic controls: INDFMPIR, DMDEDUC2, DMDHHSIZ, RIDAGEYR, RIAGENDR, RIDRETH3.
-Data processing: SEQN, WTDRD1, SDMVSTRA, SDMVPSU, DR1DRSTZ.
-
-
-
-
-Energy
-DR1TKCAL
-Total daily calorie intake
-
-Protein
-DR1TPROT
-Protein consumed; supports muscles, enzymes, tissue repair
-
-Carbohydrates
-DR1TCARB
-Total carbohydrate intake; major energy source
-
-Total fat
-DR1TTFAT
-Total dietary fat; energy and cell function
-
-Total sugars
-DR1TSUGR
-All dietary sugars, including naturally occurring sugars
-
-Dietary fiber
-DR1TFIBE
-Nondigestible carbohydrates important for gut and metabolic health
-
-Saturated fat
-DR1TSFAT
-Type of fat associated with cardiovascular risk when consumed in excess
-
-Monounsaturated fat
-DR1TMFAT
-Unsaturated fats common in olive oil, nuts, and avocados
-
-Polyunsaturated fat
-DR1TPFAT
-Fat class that includes essential fatty acids
-
-Cholesterol
-DR1TCHOL
-Dietary cholesterol from animal foods
-
-
-
+Micronutrients
+-------------------------------------------------
 Vitamin B9 (folate)
 DR1TFDFE
 DNA synthesis, red blood cell development
@@ -197,6 +119,8 @@ DR1TVD
 Calcium absorption and bone health
 
 
+Variables
+-----------------------------------------------------------------------------------------
 Food insecurity: FSDAD, FSD032C, FSD041, FSD071.
 Food assistance: FSD230, FSD151.
 Macronutrients: DR1TKCAL, DR1TPROT, DR1TCARB, DR1TTFAT, DR1TFIBE, DR1TCHOL, DR1TSUGR
@@ -315,6 +239,8 @@ To answer this question, we should use only the data of individuals who:
 #print(data[data["DR1TKCAL"] <= 100])
 #print(data[data["DR1TKCAL"] <= 200].shape)
 
+
+
 #------------------------------------------------------
 #Graph 1 - pie chart of FSDAD (food security level)
 FSDAD_full = data[data["FSDAD"] == 1]["FSDAD"].count()
@@ -331,6 +257,8 @@ plt.legend()
 #plt.savefig("graphs/Graph 1.png")
 #plt.show()
 
+
+
 #-------------------------------------------------------
 #Graph 2: distribution of macronutritient intake
 fig, axs = plt.subplots(4, 2, figsize = (13, 17))
@@ -345,6 +273,8 @@ for i, col in enumerate(macronutrients):
 plt.suptitle("Graph 2 - Distribution of Intake of Macronutrients")
 plt.savefig("graphs/Graph 2.png")
 #plt.show()
+
+
 
 #--------------------------------------------------
 #Graph 3: distribution of micronutrient intake
@@ -361,6 +291,8 @@ for i, col in enumerate(micronutrients):
 plt.suptitle("Graph 3 - Distribution of Intake of Micronutrients")
 plt.savefig("graphs/Graph 3.png")
 #plt.show()
+
+
 
 #--------------------------------------------------------------
 #Graph 4: Boxplots of macronutrients based on FSDAD category
@@ -389,6 +321,8 @@ fig.suptitle("Graph 4 - Macronutrient Intake by Food Security Status", fontsize 
 plt.savefig("graphs/Graph 4.png")
 #plt.show()
 
+
+
 #----------------------------------------------------------------
 #Graph 5: Boxplots of micronutrients based on FSDAD category
 fig, axs = plt.subplots(2, 2, figsize = (13, 17))
@@ -412,6 +346,8 @@ fig.subplots_adjust(hspace = 0.2, wspace = 0.2)
 fig.suptitle("Graph 5 - Micronutrient Intake by Food Security Status", fontsize = 18)
 plt.savefig("graphs/Graph 5.png")
 #plt.show()
+
+
 
 #--------------------------------------
 #Graph 6 - Boxplots of Nutrients based on FSDAD category (not showing outliers)
@@ -441,6 +377,8 @@ fig.subplots_adjust(hspace = 0.2, wspace = 0.4)
 fig.suptitle("Graph 6 - Micronutrient Intake by Food Security Status (Zoomed in)", fontsize = 18)
 plt.savefig("graphs/Graph 6.png")
 #plt.show()
+
+
 
 #-----------------------------------------
 #Graph 7: Correlation Heatmap between Food Security (FSDAD) and Nutrients
