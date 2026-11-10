@@ -2,6 +2,9 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import numpy as np
 import seaborn as sns
+import os
+print(os.getcwd())
+print(os.listdir("."))
 
 pd.set_option("display.max_columns", None)
 #pd.set_option("display.float_format", "{:.2f}".format)
@@ -240,7 +243,7 @@ To answer this question, we should use only the data of individuals who:
 #print(data[data["DR1TKCAL"] <= 200].shape)
 
 
-
+"""
 #------------------------------------------------------
 #Graph 1 - pie chart of FSDAD (food security level)
 FSDAD_full = data[data["FSDAD"] == 1]["FSDAD"].count()
@@ -390,6 +393,8 @@ plt.figure(figsize = (10, 10))
 heatmap = sns.heatmap(corr, annot = True)
 plt.title("Graph 7 - Correlation Heatmap of Food Security Levels and Nutrient Intake")
 plt.savefig("graphs/Graph 7.png")
-plt.show()
+#plt.show()
 
 #------------------------------------------------
+
+"""
