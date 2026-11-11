@@ -3,8 +3,6 @@ import matplotlib.pyplot as plt
 import numpy as np
 import seaborn as sns
 import os
-print(os.getcwd())
-print(os.listdir("."))
 
 pd.set_option("display.max_columns", None)
 #pd.set_option("display.float_format", "{:.2f}".format)
@@ -243,7 +241,7 @@ To answer this question, we should use only the data of individuals who:
 #print(data[data["DR1TKCAL"] <= 200].shape)
 
 
-"""
+
 #------------------------------------------------------
 #Graph 1 - pie chart of FSDAD (food security level)
 FSDAD_full = data[data["FSDAD"] == 1]["FSDAD"].count()
@@ -257,7 +255,7 @@ FSDAD_data = pd.DataFrame({"Labels": ["Full", "Marginal", "Low", "Very Low"],
 plt.pie(FSDAD_data["Levels"], labels = FSDAD_data["Labels"], autopct="%1.1f%%")
 plt.title("Graph 1 - Percentage of Participants for Each Level of Food Security")
 plt.legend()
-#plt.savefig("graphs/Graph 1.png")
+plt.savefig("graphs_Pres1/Graph 1.png")
 #plt.show()
 
 
@@ -274,7 +272,7 @@ for i, col in enumerate(macronutrients):
     axs[i].axvline(np.mean(data[col]), color = 'red', linestyle = 'dashed', linewidth = 2)
 
 plt.suptitle("Graph 2 - Distribution of Intake of Macronutrients")
-plt.savefig("graphs/Graph 2.png")
+plt.savefig("graphs_Pres1/Graph 2.png")
 #plt.show()
 
 
@@ -292,7 +290,7 @@ for i, col in enumerate(micronutrients):
     axs[i].axvline(np.mean(data[col]), color = 'red', linestyle = 'dashed', linewidth = 2)
 
 plt.suptitle("Graph 3 - Distribution of Intake of Micronutrients")
-plt.savefig("graphs/Graph 3.png")
+plt.savefig("graphs_Pres1/Graph 3.png")
 #plt.show()
 
 
@@ -321,7 +319,7 @@ for i in range(len(macronutrients), len(axs)):
 
 fig.subplots_adjust(hspace = 0.5, wspace = 0.2)
 fig.suptitle("Graph 4 - Macronutrient Intake by Food Security Status", fontsize = 18)
-plt.savefig("graphs/Graph 4.png")
+plt.savefig("graphs_Pres1/Graph 4.png")
 #plt.show()
 
 
@@ -347,7 +345,7 @@ for i, col in enumerate(micronutrients):
 
 fig.subplots_adjust(hspace = 0.2, wspace = 0.2)
 fig.suptitle("Graph 5 - Micronutrient Intake by Food Security Status", fontsize = 18)
-plt.savefig("graphs/Graph 5.png")
+plt.savefig("graphs_Pres1/Graph 5.png")
 #plt.show()
 
 
@@ -378,7 +376,7 @@ for i in range(len(nutrients), len(axs)):
 
 fig.subplots_adjust(hspace = 0.2, wspace = 0.4)
 fig.suptitle("Graph 6 - Micronutrient Intake by Food Security Status (Zoomed in)", fontsize = 18)
-plt.savefig("graphs/Graph 6.png")
+plt.savefig("graphs_Pres1/Graph 6.png")
 #plt.show()
 
 
@@ -392,9 +390,8 @@ corr = corr_data.corr()
 plt.figure(figsize = (10, 10))
 heatmap = sns.heatmap(corr, annot = True)
 plt.title("Graph 7 - Correlation Heatmap of Food Security Levels and Nutrient Intake")
-plt.savefig("graphs/Graph 7.png")
+plt.savefig("graphs_Pres1/Graph 7.png")
 #plt.show()
 
 #------------------------------------------------
 
-"""
